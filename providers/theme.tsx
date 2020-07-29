@@ -33,6 +33,11 @@ body,
     * {
       box-sizing: border-box;
     }
+    svg[role="button"] {
+      filter: drop-shadow(${(props) => props.theme.SHADOW});
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
 }
 `;
 

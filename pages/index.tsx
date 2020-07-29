@@ -14,9 +14,7 @@ interface HomePageProps {
 const HomePage: NextPage<HomePageProps> = ({ images }) => {
   return (
     <Template>
-      <Toolbar>
-        <SectionTitle>Toolbar</SectionTitle>
-      </Toolbar>
+      <Toolbar />
       <MainView>
         <SectionTitle>MainView</SectionTitle>
       </MainView>
