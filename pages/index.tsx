@@ -1,33 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import { NextPage } from "next";
 import Axios from "axios";
 
-const Template = styled.main`
-  grid-template-areas:
-    "toolbar preview"
-    "main preview";
-  grid-template-columns: 1fr 425px;
-  grid-template-rows: auto 1fr;
-  display: grid;
-  padding: 1rem;
-  gap: 1rem;
-`;
-
-const Toolbar = styled.nav`
-  grid-area: toolbar;
-  display: grid;
-`;
-
-const MainView = styled.article`
-  grid-area: main;
-  display: grid;
-`;
-
-const PreView = styled.aside`
-  grid-area: preview;
-  display: grid;
-`;
+import Template from "../components/Template";
+import MainView from "../components/MainView";
+import Toolbar from "../components/Toolbar";
+import PreView from "../components/PreView";
 
 interface HomePageProps {
   images: string[];
