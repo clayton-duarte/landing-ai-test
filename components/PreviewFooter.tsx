@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-export default styled.aside`
+export default styled.footer`
   box-shadow: ${(props) => props.theme.SHADOW};
+  padding: ${(props) => props.theme.SPACING};
   background: ${(props) => props.theme.BG};
-  gap: ${(props) => props.theme.SPACING};
-  grid-area: preview;
-  max-height: 100vh;
-  overflow: auto;
+  position: sticky;
   display: grid;
+  bottom: 0;
 `;
