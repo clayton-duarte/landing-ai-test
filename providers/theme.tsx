@@ -13,10 +13,14 @@ export const customTheme = {
 };
 
 const GlobalStyles = createGlobalStyle`
-body {
+html,
+body,
+#__next {
     font-family: Roboto, Oxygen, Ubuntu, sans-serif;
     background: ${(props) => props.theme.BG};
     font-size: 16px;
+    display: grid;
+    height: 100%;
     margin: 0;
 }
 `;
