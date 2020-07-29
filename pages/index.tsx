@@ -1,9 +1,7 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled from "styled-components";
-
-const Title = styled.h1`
-  color: ${(props) => props.theme.PRIMARY};
-`;
+import { NextPage } from "next";
+import Axios from "axios";
 
 const Template = styled.main`
   grid-template-areas:
@@ -31,7 +29,13 @@ const PreView = styled.aside`
   display: grid;
 `;
 
-const HomePage: FunctionComponent = () => {
+interface HomePageProps {
+  images: string[];
+}
+
+const HomePage: NextPage<HomePageProps> = ({ images }) => {
+  console.log(images);
+
   return (
     <Template>
       <Toolbar>Toolbar</Toolbar>
@@ -39,6 +43,22 @@ const HomePage: FunctionComponent = () => {
       <PreView>PreView</PreView>
     </Template>
   );
+};
+
+HomePage.getInitialProps = async () => {
+  const getImages = async () => {
+    const url = process.env.NEXT_PUBLIC_IMAGES_API as string;
+    try {
+      const response = await Axios.get<string[]>(url);
+      return response.data;
+    } catch (error) {
+      // TODO > error handling
+      return [];
+    }
+  };
+
+  const images = await getImages();
+  return { images };
 };
 
 export default HomePage;
