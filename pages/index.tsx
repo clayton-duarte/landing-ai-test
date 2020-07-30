@@ -2,7 +2,6 @@ import React from "react";
 import { NextPage } from "next";
 import Axios from "axios";
 
-import SectionTitle from "../components/SectionTitle";
 import Template from "../components/Template";
 import MainView from "../components/MainView";
 import Toolbar from "../components/Toolbar";
