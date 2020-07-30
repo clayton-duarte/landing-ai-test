@@ -8,6 +8,7 @@ import SectionTitle from "./SectionTitle";
 import Image from "./Image";
 
 const StyledRegionSelect = styled(RegionSelect)`
+  max-width: ${(props) => props.theme.SM};
   overflow: hidden;
   div[data-dir],
   div[data-wrapper="wrapper"] {

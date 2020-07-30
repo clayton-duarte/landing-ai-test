@@ -46,7 +46,7 @@ body,
     }
     svg[role="button"] {
       filter: drop-shadow(${(props) => props.theme.SHADOW_ALT});
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
 }
 `;

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NextPage } from "next";
 import Axios from "axios";
 
+import { useStateHook } from "../providers/state";
 import Template from "../components/Template";
 import MainView from "../components/MainView";
 import Toolbar from "../components/Toolbar";
@@ -12,6 +13,12 @@ interface HomePageProps {
 }
 
 const HomePage: NextPage<HomePageProps> = ({ images }) => {
+  const { setImageList } = useStateHook();
+
+  useEffect(() => {
+    setImageList(images);
+  }, [images]);
+
   return (
     <Template>
       <Toolbar />

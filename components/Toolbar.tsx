@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import { Region } from "react-region-select";
 import styled from "styled-components";
 import {
+  RiArrowRightSLine as NextIcon,
   RiShareForwardLine as RedoIcon,
   RiDeleteBinLine as DeleteIcon,
 } from "react-icons/ri";
 
 import { useStateHook } from "../providers/state";
 import ToolbarWrapper from "./ToolbarWrapper";
-import SectionTitle from "./SectionTitle";
 
 const ButtonIcon = styled.button<{ disabled: boolean }>`
   all: unset;
@@ -24,9 +24,20 @@ const UndoIcon = styled(RedoIcon)`
   transform: scaleX(-1);
 `;
 
+const PreviousIcon = styled(NextIcon)`
+  transform: scaleX(-1);
+`;
+
 const Toolbar: FunctionComponent = () => {
   const [lastRemoved, setLastRemoved] = useState<Region[][]>([]);
-  const { selectedImage, regions, setRegions } = useStateHook();
+  const {
+    setSelectedImage,
+    selectedImage,
+    setRegions,
+    imageList,
+    imageRef,
+    regions,
+  } = useStateHook();
 
   const handleClickUndo = () => {
     const updatedRegions = regions;
@@ -58,26 +69,50 @@ const Toolbar: FunctionComponent = () => {
     setRegions([]);
   };
 
+  const handleClickPrevious = () => {
+    setSelectedImage(selectedImage - 1);
+  };
+
+  const handleClickNext = () => {
+    setSelectedImage(selectedImage + 1);
+  };
+
+  useEffect(() => {
+    if (typeof selectedImage === "number" && imageRef[selectedImage]) {
+      imageRef[selectedImage].scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectedImage, imageRef]);
+
   return (
     <ToolbarWrapper>
-      <SectionTitle>Tools:</SectionTitle>
       <ButtonIcon
-        disabled={!regions[selectedImage]?.length}
+        disabled={!(regions[selectedImage] && regions[selectedImage].length)}
+        onClick={handleClickClear}
+      >
+        <DeleteIcon title="clear" role="button" />
+      </ButtonIcon>
+      <ButtonIcon
+        disabled={!(regions[selectedImage] && regions[selectedImage].length)}
         onClick={handleClickUndo}
       >
         <UndoIcon title="undo" role="button" />
       </ButtonIcon>
       <ButtonIcon
-        disabled={!lastRemoved[selectedImage]?.length}
+        disabled={
+          !(lastRemoved[selectedImage] && lastRemoved[selectedImage].length)
+        }
         onClick={handleClickRedo}
       >
         <RedoIcon title="redo" role="button" />
       </ButtonIcon>
+      <ButtonIcon disabled={selectedImage === 0} onClick={handleClickPrevious}>
+        <PreviousIcon title="previous" role="button" />
+      </ButtonIcon>
       <ButtonIcon
-        disabled={!regions[selectedImage]?.length}
-        onClick={handleClickClear}
+        disabled={selectedImage === imageList.length - 1}
+        onClick={handleClickNext}
       >
-        <DeleteIcon title="clear" role="button" />
+        <NextIcon title="next" role="button" />
       </ButtonIcon>
     </ToolbarWrapper>
   );
