@@ -10,9 +10,9 @@ import PreviewBody from "./PreviewBody";
 import Button from "./Button";
 import Image from "./Image";
 
-const ActiveIcon = styled(RiCheckLine)<{ visible: boolean }>`
+const ActiveIcon = styled(RiCheckLine)<{ disabled: boolean }>`
   filter: drop-shadow(${(props) => props.theme.SHADOW_ALT});
-  transform: scale(${(props) => (props.visible ? 1 : 0)});
+  transform: scale(${(props) => (props.disabled ? 0 : 1)});
   color: ${(props) => props.theme.BG};
   transition: 0.2s ease;
   pointer-events: none;
@@ -43,7 +43,7 @@ const Preview: FunctionComponent<PreviewProps> = ({ images }) => {
             role="button"
           >
             <Image src={src}></Image>
-            <ActiveIcon visible={selectedImage === index} />
+            <ActiveIcon disabled={selectedImage !== index} />
           </ImageWrapper>
         ))}
       </PreviewBody>
