@@ -5,9 +5,10 @@ import styled from "styled-components";
 import { useStateHook } from "../providers/state";
 import PreviewWrapper from "./PreviewWrapper";
 import PreviewFooter from "./PreviewFooter";
-import CroppedImage from "./CroppedImage";
+import ImageWrapper from "./ImageWrapper";
 import PreviewBody from "./PreviewBody";
 import Button from "./Button";
+import Image from "./Image";
 
 const ActiveIcon = styled(RiCheckLine)<{ visible: boolean }>`
   filter: drop-shadow(${(props) => props.theme.SHADOW_ALT});
@@ -36,16 +37,14 @@ const Preview: FunctionComponent<PreviewProps> = ({ images }) => {
     <PreviewWrapper>
       <PreviewBody>
         {images.map((src, index) => (
-          <CroppedImage
+          <ImageWrapper
             onClick={handleClickImage(index)}
             key={src + index}
-            height="220px"
-            width="320px"
             role="button"
-            src={src}
           >
+            <Image src={src}></Image>
             <ActiveIcon visible={selectedImage === index} />
-          </CroppedImage>
+          </ImageWrapper>
         ))}
       </PreviewBody>
       <PreviewFooter>

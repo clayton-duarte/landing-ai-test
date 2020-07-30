@@ -3,7 +3,8 @@ import React, { FunctionComponent } from "react";
 import { useStateHook } from "../providers/state";
 import MainViewWrapper from "./MainViewWrapper";
 import SectionTitle from "./SectionTitle";
-import CroppedImage from "./CroppedImage";
+import ImageWrapper from "./ImageWrapper";
+import Image from "./Image";
 
 interface MainViewProps {
   images: string[];
@@ -14,12 +15,10 @@ const MainView: FunctionComponent<MainViewProps> = ({ images }) => {
 
   return (
     <MainViewWrapper>
-      <SectionTitle>Selected Image</SectionTitle>
-      <CroppedImage
-        height="calc((100vw - 375px) * 3 /4)"
-        width="calc(100vw - 384px)"
-        src={images[selectedImage]}
-      />
+      <SectionTitle>Selected Image: {images[selectedImage]}</SectionTitle>
+      <ImageWrapper>
+        <Image src={images[selectedImage]} />
+      </ImageWrapper>
     </MainViewWrapper>
   );
 };

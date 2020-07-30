@@ -9,14 +9,21 @@ enum colors {
 }
 
 enum shape {
-  BORDER = "2px solid rgba(0, 0, 0, 0.2)",
   SHADOW = "0px 0px 1rem rgba(0, 0, 0, 0.2)",
   SHADOW_ALT = "0px 0px 1rem rgba(0, 0, 0, 1)",
   SPACING = "1rem",
-  RADIUS = "1rem",
+  BORDER = "none",
+}
+
+enum breakpoints {
+  LG = "1280px",
+  MD = "1024px",
+  SM = "768px",
+  XS = "375px",
 }
 
 export const customTheme = {
+  ...breakpoints,
   ...colors,
   ...shape,
 };
@@ -25,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
 html,
 body,
 #__next {
-    font-family: Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: Roboto, Ubuntu, sans-serif;
     background: ${(props) => props.theme.BG};
     font-size: 16px;
     display: grid;

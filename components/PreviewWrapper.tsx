@@ -4,6 +4,7 @@ export default styled.section`
   box-shadow: ${(props) => props.theme.SHADOW};
   background: ${(props) => props.theme.BG};
   gap: ${(props) => props.theme.SPACING};
+  grid-template-rows: 1fr auto;
   grid-area: preview;
   max-height: 100vh;
   overflow: auto;
