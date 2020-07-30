@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from "react";
+import styled from "styled-components";
 import {
   RiShareForwardLine as RedoIcon,
   RiDeleteBinLine as DeleteIcon,
   RiFile2Line as NewIcon,
 } from "react-icons/ri";
-
-import styled from "styled-components";
 
 import ToolbarWrapper from "./ToolbarWrapper";
 import SectionTitle from "./SectionTitle";

@@ -10,7 +10,8 @@ enum colors {
 
 enum shape {
   BORDER = "2px solid rgba(0, 0, 0, 0.2)",
-  SHADOW = "0 0 1rem rgba(0, 0, 0, 0.2)",
+  SHADOW = "0px 0px 1rem rgba(0, 0, 0, 0.2)",
+  SHADOW_ALT = "0px 0px 1rem rgba(0, 0, 0, 1)",
   SPACING = "1rem",
   RADIUS = "1rem",
 }
@@ -33,10 +34,12 @@ body,
     * {
       box-sizing: border-box;
     }
-    svg[role="button"] {
-      filter: drop-shadow(${(props) => props.theme.SHADOW});
-      font-size: 1.2rem;
+    *[role="button"] {
       cursor: pointer;
+    }
+    svg[role="button"] {
+      filter: drop-shadow(${(props) => props.theme.SHADOW_ALT});
+      font-size: 1.2rem;
     }
 }
 `;

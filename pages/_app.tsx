@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { AppProps } from "next/app";
 
 import ThemeProvider from "../providers/theme";
+import StateProvider from "../providers/state";
 
 const MyApp: FunctionComponent<AppProps> = ({
   Component,
@@ -10,7 +11,9 @@ const MyApp: FunctionComponent<AppProps> = ({
 }) => {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <StateProvider>
+        <Component {...pageProps} />
+      </StateProvider>
     </ThemeProvider>
   );
 };

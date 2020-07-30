@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default styled.aside`
+export default styled.section`
   box-shadow: ${(props) => props.theme.SHADOW};
   background: ${(props) => props.theme.BG};
   gap: ${(props) => props.theme.SPACING};

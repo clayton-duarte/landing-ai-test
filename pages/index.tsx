@@ -7,6 +7,7 @@ import Template from "../components/Template";
 import MainView from "../components/MainView";
 import Toolbar from "../components/Toolbar";
 import PreView from "../components/PreView";
+
 interface HomePageProps {
   images: string[];
 }
@@ -15,9 +16,7 @@ const HomePage: NextPage<HomePageProps> = ({ images }) => {
   return (
     <Template>
       <Toolbar />
-      <MainView>
-        <SectionTitle>MainView</SectionTitle>
-      </MainView>
+      <MainView images={images} />
       <PreView images={images} />
     </Template>
   );
