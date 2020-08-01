@@ -18,8 +18,11 @@ const ActiveIcon = styled(RiCheckLine)<{ disabled: boolean }>`
   pointer-events: none;
   place-self: center;
   position: absolute;
-  font-size: 10rem;
+  font-size: 5rem;
   z-index: 99;
+  @media (min-width: ${(props) => props.theme.MD}) {
+    font-size: 10rem;
+  }
 `;
 
 interface PreviewProps {

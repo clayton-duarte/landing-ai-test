@@ -7,8 +7,11 @@ export default styled.nav`
   gap: ${(props) => props.theme.SPACING};
   grid-template-columns: repeat(5, auto);
   color: ${(props) => props.theme.BG};
-  justify-content: start;
+  justify-content: space-around;
   align-items: center;
   grid-area: toolbar;
   display: grid;
+  @media (min-width: ${(props) => props.theme.SM}) {
+    justify-content: center;
+  }
 `;

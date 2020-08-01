@@ -4,12 +4,13 @@ import styled from "styled-components";
 
 import { useStateHook } from "../providers/state";
 import MainViewWrapper from "./MainViewWrapper";
-import SectionTitle from "./SectionTitle";
 import Image from "./Image";
 
 const StyledRegionSelect = styled(RegionSelect)`
-  max-width: ${(props) => props.theme.SM};
+  width: ${(props) => props.theme.SM};
+  max-width: calc(100% - 2rem);
   overflow: hidden;
+  margin: 0 auto;
   div[data-dir],
   div[data-wrapper="wrapper"] {
     // !important overrides the lib component inline styles
@@ -33,7 +34,6 @@ const MainView: FunctionComponent<MainViewProps> = ({ images }) => {
 
   return (
     <MainViewWrapper>
-      <SectionTitle>Selected Image: {images[selectedImage]}</SectionTitle>
       <StyledRegionSelect
         regions={regions[selectedImage]}
         onChange={handleChange}
